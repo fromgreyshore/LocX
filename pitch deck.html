@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocX - Y Combinator Pitch Deck</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #0f0f0f;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide:nth-child(odd) {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+        }
+        
+        .slide:nth-child(even) {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+        }
+        
+        h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+        
+        h2 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            color: #00ff88;
+            font-weight: 800;
+        }
+        
+        h3 {
+            font-size: 2em;
+            color: #00ccff;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.5em;
+            color: #888;
+            margin-bottom: 40px;
+        }
+        
+        .stat-box {
+            background: rgba(0, 255, 136, 0.1);
+            border: 2px solid #00ff88;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+        
+        .stat-number {
+            font-size: 3.5em;
+            font-weight: 900;
+            color: #00ff88;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1.2em;
+            color: #ccc;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .highlight {
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+        
+        .problem-card {
+            background: rgba(255, 0, 100, 0.1);
+            border: 2px solid #ff0064;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .solution-card {
+            background: rgba(0, 255, 136, 0.1);
+            border: 2px solid #00ff88;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        ul {
+            font-size: 1.2em;
+            line-height: 2;
+        }
+        
+        .quote {
+            font-style: italic;
+            font-size: 1.5em;
+            color: #00ccff;
+            margin: 30px 0;
+            padding-left: 30px;
+            border-left: 4px solid #00ccff;
+        }
+        
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #00ff88;
+        }
+        
+        .timeline-item {
+            background: #1a1a1a;
+            border: 2px solid #00ff88;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            z-index: 1;
+            flex: 1;
+            margin: 0 10px;
+        }
+        
+        .persona-card {
+            background: linear-gradient(135deg, rgba(0, 204, 255, 0.1), rgba(0, 255, 136, 0.1));
+            border: 2px solid #00ccff;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .tech-item {
+            background: rgba(0, 204, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 1px solid #00ccff;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        
+        th {
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+            font-weight: 700;
+        }
+        
+        .logo {
+            font-size: 2em;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+        
+        .call-to-action {
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            color: #0f0f0f;
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .call-to-action:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.5);
+        }
+        
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 204, 255, 0.05));
+            border: 3px solid transparent;
+            border-image: linear-gradient(45deg, #00ff88, #00ccff) 1;
+            padding: 40px;
+            border-radius: 20px;
+        }
+        
+        .ui-mockup {
+            background: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: monospace;
+        }
+        
+        .mockup-header {
+            background: #222;
+            padding: 15px;
+            margin: -20px -20px 20px;
+            border-radius: 13px 13px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .search-bar {
+            background: #333;
+            padding: 15px;
+            border-radius: 10px;
+            color: #00ff88;
+            margin-bottom: 20px;
+        }
+        
+        .event-card {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid #00ff88;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .filter-tag {
+            display: inline-block;
+            background: rgba(0, 204, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9em;
+        }
+        
+        .code-block {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .financial-table {
+            background: rgba(0, 255, 136, 0.05);
+            border: 2px solid #00ff88;
+        }
+        
+        .financial-table th {
+            background: rgba(0, 255, 136, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 0: Executive Summary (One-Pager) -->
+    <div class="slide">
+        <h2>Executive Summary</h2>
+        <div class="executive-summary">
+            <h3>🚀 The Opportunity</h3>
+            <p><strong>LocX is building the Google of real-world events</strong> - a semantic discovery infrastructure that solves the €45B fragmented event discovery problem.</p>
+            
+            <div class="grid" style="margin: 30px 0;">
+                <div>
+                    <h4>Problem</h4>
+                    <ul style="font-size: 1em;">
+                        <li>69% experience FOMO from missing events</li>
+                        <li>Events scattered across 20+ platforms</li>
+                        <li>No unified discovery solution exists</li>
+                        <li>Gen Z abandoning traditional search</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Solution</h4>
+                    <ul style="font-size: 1em;">
+                        <li>Semantic search: "free queer workshops near me"</li>
+                        <li>20+ data sources aggregated</li>
+                        <li>Neighborhood-level precision</li>
+                        <li>Multilingual by design</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h4>📊 Market</h4>
+            <p><strong>TAM:</strong> €890B global | <strong>SAM:</strong> €120B Europe | <strong>SOM:</strong> €450M Berlin</p>
+            <p>Germany: 1.72M events/year, 84% cultural participation, €2.1B market</p>
+            
+            <h4>💼 Business Model</h4>
+            <p><strong>Phase 1:</strong> Freemium API, Premium analytics | <strong>Phase 2:</strong> Ticketing (2-3%), Promoted listings</p>
+            
+            <h4>🎯 Traction Goals</h4>
+            <p><strong>Month 6:</strong> 10K MAU, 20 sources | <strong>Month 12:</strong> 200K MAU, Revenue positive</p>
+            <p><strong>Year 3:</strong> €5M ARR, 5 cities, 2M MAU</p>
+            
+            <h4>💰 Ask</h4>
+            <p><strong>YC Investment:</strong> Technical infrastructure (40%), Team (30%), Growth (30%)</p>
+            <p><strong>Why Now:</strong> Gen Z behavior shift + Post-COVID cultural boom + AI/NLP maturity</p>
+        </div>
+    </div>
+
+    <!-- Slide 1: Title Slide -->
+    <div class="slide">
+        <div class="logo">LocX</div>
+        <h1>The Google of Real-World Events</h1>
+        <p class="subtitle">Semantic Event Discovery Infrastructure for the Fragmented Cultural Ecosystem</p>
+        <div class="grid">
+            <div class="stat-box">
+                <div class="stat-number">€2.1B</div>
+                <div class="stat-label">German Event Market Value</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">1.72M</div>
+                <div class="stat-label">Annual Events in Germany</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">84%</div>
+                <div class="stat-label">Germans Participate in Cultural Activities</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: The Problem -->
+    <div class="slide">
+        <h2>The €45B Problem</h2>
+        <div class="problem-card">
+            <h3>Event Discovery is Fundamentally Broken</h3>
+            <div class="quote">"I didn't even know this workshop existed until after it ended"</div>
+            <p style="font-size: 1.2em;">- Real user feedback from our research</p>
+        </div>
+        
+        <div class="grid">
+            <div class="stat-box">
+                <div class="stat-number">69%</div>
+                <div class="stat-label">Millennials Experience FOMO</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">90%</div>
+                <div class="stat-label">Search for Events ≤1x/Week</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">85%</div>
+                <div class="stat-label">Gen Z Uses Social Media for Discovery</div>
+            </div>
+        </div>
+        
+        <h3>Platform Fragmentation Reality Check</h3>
+        <ul>
+            <li><span class="highlight">Eventbrite:</span> Only captures ticketed events</li>
+            <li><span class="highlight">Facebook:</span> Algorithmic noise, declining usage</li>
+            <li><span class="highlight">Instagram:</span> No structured event data</li>
+            <li><span class="highlight">Meetup:</span> Limited to specific communities</li>
+            <li><span class="highlight">Telegram/WhatsApp:</span> Completely siloed</li>
+        </ul>
+    </div>
+
+    <!-- Slide 3: Market Analysis -->
+    <div class="slide">
+        <h2>German Market Deep Dive</h2>
+        
+        <div class="grid">
+            <div class="stat-box">
+                <div class="stat-number">45,000+</div>
+                <div class="stat-label">Cultural Events/Year in Berlin</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">€4.6B</div>
+                <div class="stat-label">Concert & Festival Market</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">40%</div>
+                <div class="stat-label">Gen Z Prefers TikTok/IG over Google</div>
+            </div>
+        </div>
+        
+        <h3>User Behavior Shift</h3>
+        <table>
+            <tr>
+                <th>Platform</th>
+                <th>Usage Rate</th>
+                <th>Event Discovery</th>
+            </tr>
+            <tr>
+                <td>Instagram</td>
+                <td>89% of Gen Z</td>
+                <td>45% use for event discovery</td>
+            </tr>
+            <tr>
+                <td>TikTok</td>
+                <td>82% of Gen Z</td>
+                <td>41% search on platform</td>
+            </tr>
+            <tr>
+                <td>Traditional Search</td>
+                <td>64% of Gen Z</td>
+                <td>25% less than Gen X</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Slide 4: Our Solution -->
+    <div class="slide">
+        <h2>LocX: The Unified Discovery Layer</h2>
+        
+        <div class="solution-card">
+            <h3>🔍 Semantic Search That Actually Works</h3>
+            <p style="font-size: 1.3em;">"free queer workshops this weekend near Kreuzberg"</p>
+            <p>→ Returns relevant results using NLP and vector-based search</p>
+        </div>
+        
+        <h3>Core Innovation Stack</h3>
+        <div class="tech-stack">
+            <div class="tech-item">Multilingual Embeddings</div>
+            <div class="tech-item">Vector Search</div>
+            <div class="tech-item">Location Graph</div>
+            <div class="tech-item">Semantic Tagging</div>
+            <div class="tech-item">Multi-Source Aggregation</div>
+        </div>
+        
+        <h3>Data Sources (Initial 20)</h3>
+        <div class="grid">
+            <div>
+                <strong>APIs:</strong>
+                <ul>
+                    <li>Eventbrite</li>
+                    <li>Facebook Events</li>
+                    <li>Meetup</li>
+                    <li>Berlin.de</li>
+                </ul>
+            </div>
+            <div>
+                <strong>Scrapers:</strong>
+                <ul>
+                    <li>Instagram accounts</li>
+                    <li>Venue websites</li>
+                    <li>PDF newsletters</li>
+                    <li>Cultural calendars</li>
+                </ul>
+            </div>
+            <div>
+                <strong>Community:</strong>
+                <ul>
+                    <li>Telegram channels</li>
+                    <li>WhatsApp groups</li>
+                    <li>Direct submissions</li>
+                    <li>Partner venues</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: UI/UX Mockups -->
+    <div class="slide">
+        <h2>User Experience Design</h2>
+        
+        <h3>Mobile-First Discovery Interface</h3>
+        <div class="ui-mockup">
+            <div class="mockup-header">
+                <span style="color: #00ff88;">LocX</span>
+                <span style="margin-left: auto; color: #666;">Berlin ▼</span>
+            </div>
+            
+            <div class="search-bar">
+                🔍 "free queer workshops this weekend near Kreuzberg"
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <span class="filter-tag">This Weekend ✓</span>
+                <span class="filter-tag">Free ✓</span>
+                <span class="filter-tag">Queer ✓</span>
+                <span class="filter-tag">< 2km</span>
+                <span class="filter-tag">Workshop</span>
+            </div>
+            
+            <div class="event-card">
+                <strong style="color: #00ff88;">Queer Art Workshop</strong><br>
+                📍 Kreuzberg Community Center • 800m away<br>
+                📅 Saturday, 14:00-17:00 • 💰 Free<br>
+                🏷️ Art, LGBTQ+, Workshop, Community<br>
+                <small style="color: #666;">Source: Instagram @kreuzbergcenter</small>
+            </div>
+            
+            <div class="event-card">
+                <strong style="color: #00ff88;">DIY Zine Making</strong><br>
+                📍 Südblock • 1.2km away<br>
+                📅 Sunday, 15:00-18:00 • 💰 Donation-based<br>
+                🏷️ Creative, Queer, DIY, Social<br>
+                <small style="color: #666;">Source: Telegram QueerBerlin</small>
+            </div>
+        </div>
+        
+        <h3>Key UX Features</h3>
+        <div class="grid">
+            <div class="solution-card">
+                <h4>Natural Language Input</h4>
+                <p>No need for exact keywords - understand intent</p>
+            </div>
+            <div class="solution-card">
+                <h4>Smart Filters</h4>
+                <p>Auto-extracted from query + manual refinement</p>
+            </div>
+            <div class="solution-card">
+                <h4>Source Transparency</h4>
+                <p>Users see where events come from</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Target Users & Personas -->
+    <div class="slide">
+        <h2>Our Users: The Cultural Seekers</h2>
+        
+        <div class="grid">
+            <div class="persona-card">
+                <h3>The Creative Freelancer</h3>
+                <p><strong>Age:</strong> 25-35</p>
+                <p><strong>Pain:</strong> Missing networking events</p>
+                <p><strong>Need:</strong> Professional + social discovery</p>
+                <p><strong>Behavior:</strong> Checks 5+ platforms weekly</p>
+            </div>
+            
+            <div class="persona-card">
+                <h3>The New Berliner</h3>
+                <p><strong>Age:</strong> 22-40</p>
+                <p><strong>Pain:</strong> Language barriers, no network</p>
+                <p><strong>Need:</strong> Bilingual, community events</p>
+                <p><strong>Behavior:</strong> High intent, ready to engage</p>
+            </div>
+            
+            <div class="persona-card">
+                <h3>The Event Organizer</h3>
+                <p><strong>Type:</strong> Indie venues, collectives</p>
+                <p><strong>Pain:</strong> Can't reach audience</p>
+                <p><strong>Need:</strong> Free/cheap promotion</p>
+                <p><strong>Value:</strong> Direct community access</p>
+            </div>
+        </div>
+        
+        <div class="stat-box">
+            <div class="stat-number">57%</div>
+            <div class="stat-label">Say other commitments prevent cultural participation</div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Market Sizing -->
+    <div class="slide">
+        <h2>TAM/SAM/SOM Analysis</h2>
+        
+        <div class="grid">
+            <div class="stat-box">
+                <div class="stat-number">€890B</div>
+                <div class="stat-label">Global Events Industry (TAM)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">€120B</div>
+                <div class="stat-label">European Event Market (SAM)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">€450M</div>
+                <div class="stat-label">Berlin Discovery Market (SOM)</div>
+            </div>
+        </div>
+        
+        <h3>Berlin Market Breakdown</h3>
+        <ul>
+            <li>~45,000 cultural events annually</li>
+            <li>100+ museums, 150+ galleries</li>
+            <li>3,000+ active venues</li>
+            <li>500+ recurring cultural programs</li>
+            <li>€2.2B in startup funding (tech ecosystem)</li>
+        </ul>
+        
+        <h3>Revenue Model</h3>
+        <div class="grid">
+            <div class="solution-card">
+                <h3>Phase 1: Discovery</h3>
+                <ul>
+                    <li>Freemium API access</li>
+                    <li>Premium venue analytics</li>
+                    <li>White-label solutions</li>
+                </ul>
+            </div>
+            <div class="solution-card">
+                <h3>Phase 2: Transactions</h3>
+                <ul>
+                    <li>Ticketing integration (2-3%)</li>
+                    <li>Promoted listings</li>
+                    <li>Audience insights</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Competitive Landscape -->
+    <div class="slide">
+        <h2>Why We Win</h2>
+        
+        <table>
+            <tr>
+                <th>Platform</th>
+                <th>Coverage</th>
+                <th>Search</th>
+                <th>Local Focus</th>
+                <th>Multi-source</th>
+            </tr>
+            <tr>
+                <td><strong>LocX</strong></td>
+                <td>✅ All events</td>
+                <td>✅ Semantic</td>
+                <td>✅ Neighborhood-level</td>
+                <td>✅ 20+ sources</td>
+            </tr>
+            <tr>
+                <td>Eventbrite</td>
+                <td>❌ Ticketed only</td>
+                <td>❌ Keyword</td>
+                <td>❌ City-level</td>
+                <td>❌ Single platform</td>
+            </tr>
+            <tr>
+                <td>Facebook</td>
+                <td>⚠️ Declining</td>
+                <td>❌ Algorithm-driven</td>
+                <td>❌ No structure</td>
+                <td>❌ Walled garden</td>
+            </tr>
+            <tr>
+                <td>Google</td>
+                <td>⚠️ Limited</td>
+                <td>✅ Good</td>
+                <td>❌ Generic</td>
+                <td>⚠️ SEO-dependent</td>
+            </tr>
+        </table>
+        
+        <h3>Our Moats</h3>
+        <div class="grid">
+            <div class="stat-box">
+                <h3>Data Network Effect</h3>
+                <p>More sources → Better discovery → More users → More organizers</p>
+            </div>
+            <div class="stat-box">
+                <h3>Local Graph</h3>
+                <p>Proprietary neighborhood-level understanding no one else has</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: Technical Deep Dive with NLP/Vector Details -->
+    <div class="slide">
+        <h2>Technical Architecture Deep Dive</h2>
+        
+        <h3>NLP & Vector Search Implementation</h3>
+        
+        <div class="code-block">
+            <pre style="color: #00ff88; margin: 0;">
+# Semantic Query Processing Pipeline
+
+1. Query Understanding
+   Input: "free queer workshops this weekend near Kreuzberg"
+   ↓
+2. NLP Entity Extraction
+   - Event Type: workshop
+   - Attributes: free, queer
+   - Time: this weekend → [2024-01-20, 2024-01-21]
+   - Location: Kreuzberg → lat/lon + 2km radius
+   ↓
+3. Multilingual Embeddings (BERT-based)
+   - German/English parallel processing
+   - 768-dimensional vectors
+   - Contextual understanding: "queer" → LGBTQ+ tags
+   ↓
+4. Vector Similarity Search (Faiss)
+   - Approximate nearest neighbors
+   - Cosine similarity threshold: 0.7
+   - Real-time results in <100ms
+   ↓
+5. Ranking & Filtering
+   - Location proximity boost
+   - Temporal relevance
+   - Source credibility scoring</pre>
+        </div>
+        
+        <h3>Technical Stack Details</h3>
+        <div class="grid">
+            <div class="solution-card">
+                <h4>Data Pipeline</h4>
+                <ul style="font-size: 1em;">
+                    <li><strong>Ingestion:</strong> Apache Airflow</li>
+                    <li><strong>Processing:</strong> Spark + Python</li>
+                    <li><strong>Storage:</strong> PostgreSQL + S3</li>
+                    <li><strong>Cache:</strong> Redis</li>
+                </ul>
+            </div>
+            <div class="solution-card">
+                <h4>ML/NLP Stack</h4>
+                <ul style="font-size: 1em;">
+                    <li><strong>Embeddings:</strong> Sentence-BERT</li>
+                    <li><strong>NER:</strong> spaCy + custom models</li>
+                    <li><strong>Vector DB:</strong> Faiss + Pinecone</li>
+                    <li><strong>Training:</strong> PyTorch</li>
+                </ul>
+            </div>
+            <div class="solution-card">
+                <h4>API & Frontend</h4>
+                <ul style="font-size: 1em;">
+                    <li><strong>API:</strong> FastAPI + GraphQL</li>
+                    <li><strong>Web:</strong> Next.js + React</li>
+                    <li><strong>Mobile:</strong> React Native</li>
+                    <li><strong>Monitoring:</strong> Datadog</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3>GDPR Compliance Architecture</h3>
+        <ul>
+            <li>✅ Privacy by Design: No PII in event data</li>
+            <li>✅ EU-only infrastructure (Frankfurt region)</li>
+            <li>✅ Anonymized analytics only</li>
+            <li>✅ User consent for personalization</li>
+            <li>✅ Right to erasure: 24hr compliance</li>
+        </ul>
+    </div>
+
+    <!-- NEW: Financial Projections -->
+    <div class="slide">
+        <h2>Financial Projections (Years 1-3)</h2>
+        
+        <table class="financial-table">
+            <tr>
+                <th>Metric</th>
+                <th>Year 1</th>
+                <th>Year 2</th>
+                <th>Year 3</th>
+            </tr>
+            <tr>
+                <td><strong>MAU</strong></td>
+                <td>200K</td>
+                <td>800K</td>
+                <td>2M</td>
+            </tr>
+            <tr>
+                <td><strong>Cities</strong></td>
+                <td>1 (Berlin)</td>
+                <td>3 (+Hamburg, Munich)</td>
+                <td>5 (+Amsterdam, Vienna)</td>
+            </tr>
+            <tr>
+                <td><strong>Events Indexed</strong></td>
+                <td>120K</td>
+                <td>500K</td>
+                <td>1.2M</td>
+            </tr>
+            <tr style="background: rgba(0, 255, 136, 0.1);">
+                <td><strong>Revenue Streams</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>API Subscriptions</td>
+                <td>€50K</td>
+                <td>€400K</td>
+                <td>€1.2M</td>
+            </tr>
+            <tr>
+                <td>Premium Analytics</td>
+                <td>€30K</td>
+                <td>€250K</td>
+                <td>€800K</td>
+            </tr>
+            <tr>
+                <td>Ticketing Fees</td>
+                <td>€0</td>
+                <td>€300K</td>
+                <td>€1.5M</td>
+            </tr>
+            <tr>
+                <td>Promoted Listings</td>
+                <td>€20K</td>
+                <td>€150K</td>
+                <td>€500K</td>
+            </tr>
+            <tr>
+                <td>White-label</td>
+                <td>€0</td>
+                <td>€200K</td>
+                <td>€1M</td>
+            </tr>
+            <tr style="background: rgba(0, 255, 136, 0.2);">
+                <td><strong>Total Revenue</strong></td>
+                <td><strong>€100K</strong></td>
+                <td><strong>€1.3M</strong></td>
+                <td><strong>€5M</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Gross Margin</strong></td>
+                <td>60%</td>
+                <td>75%</td>
+                <td>82%</td>
+            </tr>
+            <tr>
+                <td><strong>Burn Rate</strong></td>
+                <td>€40K/mo</td>
+                <td>€60K/mo</td>
+                <td>€50K/mo</td>
+            </tr>
+        </table>
+        
+        <h3>Key Assumptions</h3>
+        <div class="grid">
+            <div>
+                <strong>User Growth:</strong>
+                <ul style="font-size: 1em;">
+                    <li>20% MoM growth Year 1</li>
+                    <li>Viral coefficient: 0.8</li>
+                    <li>40% monthly retention</li>
+                </ul>
+            </div>
+            <div>
+                <strong>Monetization:</strong>
+                <ul style="font-size: 1em;">
+                    <li>5% convert to paid</li>
+                    <li>€20/mo API subscription</li>
+                    <li>2.5% ticketing take rate</li>
+                </ul>
+            </div>
+            <div>
+                <strong>Costs:</strong>
+                <ul style="font-size: 1em;">
+                    <li>Team of 12 by Year 2</li>
+                    <li>€15K/mo infrastructure</li>
+                    <li>CAC: €2 → €0.50</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Traction & Milestones -->
+    <div class="slide">
+        <h2>Roadmap to Scale</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Month 1-3</h3>
+                <p>MVP Launch</p>
+                <p>10 data sources</p>
+                <p>1,000 events indexed</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Month 4-6</h3>
+                <p>Beta Users</p>
+                <p>20 sources</p>
+                <p>10K MAU</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Month 7-9</h3>
+                <p>API Launch</p>
+                <p>Venue Partners</p>
+                <p>50K MAU</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Month 10-12</h3>
+                <p>Revenue Start</p>
+                <p>Multi-city</p>
+                <p>200K MAU</p>
+            </div>
+        </div>
+        
+        <h3>Key Metrics to Track</h3>
+        <div class="grid">
+            <div class="stat-box">
+                <p><strong>Events Indexed</strong></p>
+                <p>Target: 10,000/month</p>
+            </div>
+            <div class="stat-box">
+                <p><strong>Search Accuracy</strong></p>
+                <p>Target: >85% relevance</p>
+            </div>
+            <div class="stat-box">
+                <p><strong>User Retention</strong></p>
+                <p>Target: 40% monthly</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Berlin Ecosystem Advantage -->
+    <div class="slide">
+        <h2>Why Berlin, Why Now</h2>
+        
+        <div class="grid">
+            <div class="stat-box">
+                <div class="stat-number">3,000+</div>
+                <div class="stat-label">Active Startups</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">€2.2B</div>
+                <div class="stat-label">Annual VC Funding</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">#1</div>
+                <div class="stat-label">German Startup Hub</div>
+            </div>
+        </div>
+        
+        <h3>Perfect Storm of Factors</h3>
+        <ul>
+            <li>🌍 <strong>International:</strong> 35% foreign residents, multilingual by default</li>
+            <li>🎨 <strong>Cultural Capital:</strong> UNESCO City of Design, creative hub</li>
+            <li>💻 <strong>Tech Talent:</strong> TU Berlin, 40K+ developers</li>
+            <li>💰 <strong>Affordable:</strong> 50% cheaper than London/SF</li>
+            <li>🚀 <strong>Ecosystem:</strong> Zalando, N26, Delivery Hero success stories</li>
+        </ul>
+        
+        <h3>Early Supporters</h3>
+        <p style="font-size: 1.2em;">Interest from: Kreuzberg cultural centers, indie venues, expat communities</p>
+    </div>
+
+    <!-- Slide 11: The Ask -->
+    <div class="slide">
+        <h2>Join Us in Building the Future of Discovery</h2>
+        
+        <h3>YC Investment Will Enable:</h3>
+        <div class="grid">
+            <div class="solution-card">
+                <h3>🛠️ Technical (40%)</h3>
+                <ul>
+                    <li>NLP/ML infrastructure</li>
+                    <li>Scalable data pipeline</li>
+                    <li>Mobile apps</li>
+                </ul>
+            </div>
+            <div class="solution-card">
+                <h3>👥 Team (30%)</h3>
+                <ul>
+                    <li>Senior engineers (2)</li>
+                    <li>Data scientist</li>
+                    <li>Community manager</li>
+                </ul>
+            </div>
+            <div class="solution-card">
+                <h3>🌱 Growth (30%)</h3>
+                <ul>
+                    <li>User acquisition</li>
+                    <li>Venue partnerships</li>
+                    <li>Content operations</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3>Why We'll Succeed</h3>
+        <ul>
+            <li>✅ <strong>Timing:</strong> Gen Z behavior shift + post-COVID cultural renaissance</li>
+            <li>✅ <strong>Market:</strong> Proven demand, no unified solution exists</li>
+            <li>✅ <strong>Tech:</strong> Modern NLP makes semantic search finally viable</li>
+            <li>✅ <strong>Network:</strong> Berlin's density creates perfect testing ground</li>
+            <li>✅ <strong>Vision:</strong> Infrastructure play, not just another events app</li>
+        </ul>
+        
+        <div style="text-align: center; margin-top: 50px;">
+            <p class="highlight" style="font-size: 2em;">Let's make sure no one misses out on culture again.</p>
+            <a href="#" class="call-to-action">Build with LocX →</a>
+        </div>
+    </div>
+
+    <!-- Slide 12: Appendix/Data Sources -->
+    <div class="slide">
+        <h2>Data Sources & References</h2>
+        
+        <h3>Market Data</h3>
+        <ul>
+            <li>German Convention Bureau: 1.72M events, 184M participants (2022)</li>
+            <li>Eurostat: 84% German cultural participation rate</li>
+            <li>Eventbrite TRNDS Report: 69% millennials experience FOMO</li>
+            <li>Forbes/Talker Research: 46% Gen Z prefer social media for search</li>
+        </ul>
+        
+        <h3>Berlin Ecosystem</h3>
+        <ul>
+            <li>Startup Genome: €2.2B funding, 500 startups/year</li>
+            <li>Berlin Statistics Office: 40,000 business registrations/year</li>
+            <li>EY Startup Barometer: 31% of German VC goes to Berlin</li>
+        </ul>
+        
+        <h3>User Behavior</h3>
+        <ul>
+            <li>ICSC: 85% Gen Z say social media impacts purchases</li>
+            <li>Google: 40% young people prefer TikTok/IG for local discovery</li>
+            <li>VuMA: 87.5% German millennials use social media multiple times/week</li>
+        </ul>
+        
+        <div style="text-align: center; margin-top: 50px;">
+            <p style="color: #888;">Contact: team@locx.io | Berlin, Germany</p>
+        </div>
+    </div>
+</body>
+</html>
