@@ -1,151 +1,36 @@
-# LocX 🧠⚡
-## The Neural Network Behind Event Discovery
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-> **"We don't build event apps. We build the intelligence that makes events discoverable."**
+## Getting Started
 
-LocX is semantic search infrastructure for the fragmented cultural ecosystem. Think AWS for event discovery, Stripe for cultural transactions, Redis for semantic search.
-
----
-
-## 🎯 What We Build
-
-**Not an events app.** The intelligence layer that powers event discovery.
-
-- **Semantic Search**: Natural language → structured understanding
-- **Multi-source Aggregation**: 20+ platforms → unified intelligence
-- **Vector Embeddings**: BERT → 768-dimensional event understanding
-- **Real-time Inference**: <100ms query → result pipeline
-
----
-
-## 🏗️ Architecture
-
-```
-Natural Language Query
-        ↓
-    NLP Pipeline (BERT)
-        ↓
-    Vector Search (Faiss)
-        ↓
-    Multi-source Data Layer
-        ↓
-    Semantic Results
-```
-
-### Tech Stack
-- **Frontend**: Next.js 14 + React 18 + TypeScript
-- **Animations**: GSAP + Three.js + React Three Fiber
-- **Styling**: Tailwind CSS + Framer Motion
-- **3D**: Blender → glTF/GLB
-- **Deployment**: Vercel + CDN
-
----
-
-## 🚀 Getting Started
+First, run the development server:
 
 ```bash
-# Clone the neural network
-git clone https://github.com/locx/landing
-
-# Install dependencies
-npm install
-
-# Run the intelligence
 npm run dev
-
-# Build for production
-npm run build
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
----
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 📊 Performance Targets
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- **First Contentful Paint**: <1.5s
-- **3D Animations**: 60fps desktop, 30fps mobile
-- **Lighthouse Score**: >90
-- **Core Web Vitals**: Green across all metrics
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
----
+## Learn More
 
-## 🎨 Design Philosophy
+To learn more about Next.js, take a look at the following resources:
 
-**"Neural Network Aesthetics"**
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-- **Colors**: Deep blacks (`#0a0a0a`), electric greens (`#00ff88`), cyan blues (`#00ccff`)
-- **Typography**: Mono for code/tech, Sans for human elements
-- **3D Elements**: Abstract neural networks, data flows, semantic graphs
-- **Interactions**: Cursor-reactive particles, morphing on hover
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
----
+## Deploy on Vercel
 
-## 🔧 Development
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-```bash
-# Development server
-npm run dev
-
-# Type checking
-npm run type-check
-
-# Linting
-npm run lint
-
-# 3D asset optimization
-npm run optimize-3d
-```
-
----
-
-## 📱 Sections
-
-1. **Neural Entry** - Establish AI infrastructure positioning
-2. **Human Element** - Bridge tech with cultural impact
-3. **The Machine** - Deep dive into NLP pipeline
-4. **Why LocX** - Market positioning and inevitability
-5. **The Architects** - Founder technical credibility
-6. **FAQ Reality** - Interactive Q&A with live demos
-7. **Neural Manifesto** - Infrastructure vision statement
-
----
-
-## 🎯 Mission
-
-**Every search. Every discovery. Every cultural moment.**
-**Built on LocX.**
-
-We're not building for event organizers.
-We're building for developers who build for event organizers.
-
----
-
-## 📈 Metrics
-
-- **Market**: €45B event discovery problem
-- **Coverage**: 20+ data sources, unified
-- **Performance**: <100ms semantic search
-- **Scale**: Infrastructure for cultural discovery
-
----
-
-## 🤝 Contributing
-
-LocX is the open intelligence layer for cultural discovery.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/neural-enhancement`)
-3. Commit your changes (`git commit -m 'Add semantic understanding'`)
-4. Push to the branch (`git push origin feature/neural-enhancement`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-MIT License - Because intelligence should be open.
-
----
-
-**Ready to build the neural network that powers cultural discovery?**
-
-[🚀 Start Building](https://locx.io) | [🧠 API Docs](https://docs.locx.io) | [⚡ Join Us](mailto:team@locx.io) 
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
